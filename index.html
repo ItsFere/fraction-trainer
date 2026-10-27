@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Математический Тренажер: Дроби</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <div class="main-frame">
+
+      <!-- ===================== LEFT PANEL ===================== -->
+      <div class="left-panel" id="left_panel">
+        <div class="label-title" id="label_title">Реши пример</div>
+
+        <div class="canvas-card" id="canvas_card">
+          <div class="example-frame" id="example_frame">
+
+            <div class="frac-group" id="frac1_frame">
+              <span class="lbl-whole" id="lbl1_whole"></span>
+              <div class="frac-inner" id="frac1_inner">
+                <span class="lbl-num" id="lbl1_num"></span>
+                <div class="frac-line" id="line1"></div>
+                <span class="lbl-den" id="lbl1_den"></span>
+              </div>
+            </div>
+
+            <div class="lbl-op" id="lbl_op">+</div>
+
+            <div class="frac-group" id="frac2_frame">
+              <span class="lbl-whole" id="lbl2_whole"></span>
+              <div class="frac-inner" id="frac2_inner">
+                <span class="lbl-num" id="lbl2_num"></span>
+                <div class="frac-line" id="line2"></div>
+                <span class="lbl-den" id="lbl2_den"></span>
+              </div>
+            </div>
+
+            <div class="lbl-eq" id="lbl_eq">=</div>
+            <div class="lbl-question" id="lbl_question">?</div>
+          </div>
+        </div>
+
+        <div class="entry-card" id="entry_card">
+          <div class="entry-inner" id="entry_inner">
+            <label class="format-label" id="format_label" for="format_menu">Формат ответа:</label>
+            <select class="format-menu" id="format_menu" aria-label="Формат ответа">
+              <option value="mixed">Смешанные дроби</option>
+              <option value="improper">Неправильные дроби</option>
+              <option value="decimal">Десятичные дроби</option>
+              <option value="common">Обыкновенные дроби</option>
+              <option value="natural">Натуральные числа</option>
+            </select>
+            <input class="entry-answer" id="entry_answer" type="text"
+                   placeholder="Введите ответ..." autocomplete="off"
+                   aria-label="Ответ">
+          </div>
+        </div>
+
+        <button class="btn btn-check" id="btn_check" type="button">Проверить ответ</button>
+
+        <div class="score-card" id="score_card">
+          <div class="label-score" id="label_score">Счёт: 0 / 0</div>
+        </div>
+
+        <div class="numpad" id="numpad_frame"></div>
+      </div>
+
+      <!-- ===================== RIGHT PANEL ===================== -->
+      <div class="right-panel" id="right_panel">
+        <div class="label-draft-title" id="label_draft_title">📝 Черновик для расчётов</div>
+        <textarea class="draft-text" id="draft_text" spellcheck="false"
+                  aria-label="Черновик для расчётов"></textarea>
+        <button class="btn btn-clear-draft" id="btn_clear_draft" type="button">Очистить черновик</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===================== MESSAGE BOX ===================== -->
+  <div class="modal-overlay" id="modal_overlay" role="dialog" aria-modal="true"
+       aria-labelledby="modal_title" aria-describedby="modal_text">
+    <div class="modal">
+      <div class="modal-title">
+        <span class="modal-icon info" id="modal_icon" aria-hidden="true">i</span>
+        <span id="modal_title">Сообщение</span>
+      </div>
+      <p class="modal-text" id="modal_text"></p>
+      <div class="modal-actions">
+        <button class="btn modal-ok" id="modal_ok" type="button">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="fractions.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

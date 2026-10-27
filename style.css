@@ -1,0 +1,499 @@
+/* ============================================================
+   Dark theme reproducing the CustomTkinter "dark" + "blue" look
+   ============================================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #0a1628;
+  color: #ffffff;
+  font-family: "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+#app {
+  width: 100%;
+  max-width: 1100px;
+  min-height: 550px;
+  height: 100vh;
+  max-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.main-frame {
+  display: flex;
+  flex: 1 1 auto;
+  min-height: 0;
+  gap: 20px;
+}
+
+/* ------------------------------------------------------------
+   Left panel
+   ------------------------------------------------------------ */
+
+.left-panel {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.label-title {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 10px 0;
+}
+
+.canvas-card {
+  background: #122244;
+  border: 1px solid #1e3a5f;
+  border-radius: 4px;
+  padding: 15px;
+  margin: 10px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 110px;
+  overflow-x: auto;
+}
+
+.example-frame {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.frac-group {
+  display: flex;
+  align-items: center;
+}
+
+.lbl-whole {
+  font-size: 28px;
+  font-weight: 700;
+  color: #ffffff;
+  padding-right: 10px;
+  line-height: 1.1;
+}
+
+.frac-group.no-whole .lbl-whole {
+  display: none;
+  padding-right: 0;
+}
+
+.frac-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 35px;
+}
+
+.frac-group.no-frac .frac-inner {
+  display: none;
+}
+
+.lbl-num,
+.lbl-den {
+  font-size: 24px;
+  color: #ffffff;
+  line-height: 1.15;
+}
+
+.frac-line {
+  background: #4a90e2;
+  height: 2px;
+  width: 35px;
+  margin: 2px 0;
+}
+
+.lbl-op {
+  font-size: 28px;
+  font-weight: 700;
+  color: #4a90e2;
+  padding: 0 20px;
+}
+
+.lbl-eq {
+  font-size: 28px;
+  font-weight: 700;
+  color: #ffffff;
+  padding: 0 20px;
+}
+
+.lbl-question {
+  font-size: 36px;
+  font-weight: 700;
+  color: #4a90e2;
+}
+
+/* ------------------------------------------------------------
+   Entry card
+   ------------------------------------------------------------ */
+
+.entry-card {
+  background: #122244;
+  border: 1px solid #1e3a5f;
+  border-radius: 12px;
+  margin: 10px 5px;
+}
+
+.entry-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 12px 10px;
+}
+
+.format-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+.format-menu {
+  width: 170px;
+  height: 32px;
+  padding: 0 10px;
+  font-family: inherit;
+  font-size: 12px;
+  color: #ffffff;
+  background: #1e3a5f;
+  border: 1px solid #1e3a5f;
+  border-radius: 8px;
+  outline: none;
+  cursor: pointer;
+  margin-right: 12px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 5'%3E%3Cpath fill='%23ffffff' d='M0 0h8L4 5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 8px 5px;
+}
+
+.format-menu:hover {
+  background-color: #2a5298;
+}
+
+.format-menu option {
+  background: #122244;
+  color: #ffffff;
+}
+
+.entry-answer {
+  width: 170px;
+  height: 34px;
+  padding: 0 8px;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+  color: #ffffff;
+  background: #0a1628;
+  border: 1px solid #1e3a5f;
+  border-radius: 6px;
+  outline: none;
+}
+
+.entry-answer::placeholder {
+  color: #7c8ea8;
+  font-weight: 400;
+}
+
+.entry-answer:focus {
+  border-color: #4a90e2;
+}
+
+/* ------------------------------------------------------------
+   Buttons
+   ------------------------------------------------------------ */
+
+.btn {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  color: #ffffff;
+  transition: background-color 120ms ease-in-out;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-check {
+  width: 100%;
+  height: 42px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  background: #1e6f4e;
+}
+
+.btn-check:hover {
+  background: #27ae60;
+}
+
+.score-card {
+  background: #122244;
+  border-radius: 8px;
+  height: 40px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.label-score {
+  font-size: 14px;
+  font-weight: 700;
+  color: #4a90e2;
+}
+
+/* ------------------------------------------------------------
+   Numpad
+   ------------------------------------------------------------ */
+
+.numpad {
+  margin-top: auto;
+  padding-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.numpad .btn {
+  height: 42px;
+  min-width: 0;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  background: #1e3a5f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.numpad .btn:hover {
+  background: #2a5298;
+}
+
+.numpad .btn-ce {
+  background: #c0392b;
+}
+
+.numpad .btn-ce:hover {
+  background: #a93226;
+}
+
+.numpad .btn-back {
+  background: #a04000;
+}
+
+.numpad .btn-back:hover {
+  background: #853300;
+}
+
+.numpad .btn-eq {
+  background: #1e8449;
+  font-size: 14px;
+}
+
+.numpad .btn-eq:hover {
+  background: #196f3d;
+}
+
+.numpad .btn-space {
+  background: #2471a3;
+}
+
+.numpad .btn-space:hover {
+  background: #1f618d;
+}
+
+/* ------------------------------------------------------------
+   Right panel (draft)
+   ------------------------------------------------------------ */
+
+.right-panel {
+  flex: 1 1 0;
+  min-width: 0;
+  background: #0d1b33;
+  border: 1px solid #1e3a5f;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.label-draft-title {
+  text-align: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+  padding: 12px 10px;
+}
+
+.draft-text {
+  flex: 1 1 auto;
+  min-height: 120px;
+  margin: 0 15px;
+  padding: 10px;
+  font-family: "Consolas", "Menlo", "Courier New", monospace;
+  font-size: 13px;
+  color: #ffffff;
+  background: #0a1628;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  outline: none;
+  resize: none;
+  white-space: pre-wrap;
+}
+
+.draft-text:focus {
+  border-color: #1e3a5f;
+}
+
+.btn-clear-draft {
+  height: 32px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 400;
+  background: #1e3a5f;
+  margin: 10px 15px 15px 15px;
+}
+
+.btn-clear-draft:hover {
+  background: #2a5298;
+}
+
+/* ------------------------------------------------------------
+   Message box (tkinter.messagebox replacement)
+   ------------------------------------------------------------ */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 20px;
+}
+
+.modal-overlay.is-open {
+  display: flex;
+}
+
+.modal {
+  width: 100%;
+  max-width: 420px;
+  background: #122244;
+  border: 1px solid #1e3a5f;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.55);
+}
+
+.modal-title {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.modal-icon {
+  width: 26px;
+  height: 26px;
+  flex: 0 0 26px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.modal-icon.info {
+  background: #1e8449;
+}
+
+.modal-icon.error {
+  background: #c0392b;
+}
+
+.modal-text {
+  font-size: 14px;
+  color: #d6e0f0;
+  margin: 0 0 18px 0;
+  line-height: 1.45;
+  word-break: break-word;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.modal-ok {
+  min-width: 100px;
+  height: 34px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  background: #2a5298;
+  padding: 0 16px;
+}
+
+.modal-ok:hover {
+  background: #4a90e2;
+}
+
+/* ------------------------------------------------------------
+   Small screens
+   ------------------------------------------------------------ */
+
+@media (max-width: 900px) {
+  body {
+    overflow: auto;
+  }
+
+  #app {
+    height: auto;
+    max-height: none;
+    min-height: 100vh;
+    padding: 14px;
+  }
+
+  .main-frame {
+    flex-direction: column;
+  }
+
+  .right-panel {
+    min-height: 260px;
+  }
+}
